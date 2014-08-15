@@ -1,0 +1,67 @@
+﻿<phone:PhoneApplicationPage
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:Game"
+    xmlns:System="clr-namespace:System;assembly=mscorlib"
+    x:Class="Game.MainPage"
+    mc:Ignorable="d"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    
+    shell:SystemTray.IsVisible="True">
+
+    <!--<phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar>
+            <shell:ApplicationBar.MenuItems>
+                <shell:ApplicationBarMenuItem IsEnabled="True" Text="评分"/>
+            </shell:ApplicationBar.MenuItems>
+            <shell:ApplicationBarIconButton IconUri="/Assets/AppBar3/refresh.png" Click="ApplicationBarIconButton_Click_1" IsEnabled="True" Text="开始"/>
+            <shell:ApplicationBarIconButton Click="Settings_Click" IconUri="/Assets/AppBar/feature.settings.png" Text="设置"/>
+            <shell:ApplicationBarIconButton IconUri="/Assets/AppBar2/share.png" IsEnabled="True" Text="分享"/>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>-->
+    <Grid x:Name="LayoutRoot" ManipulationStarted="LayoutRoot_ManipulationStarted" ManipulationDelta="LayoutRoot_ManipulationDelta"  ManipulationCompleted="bordGrid_ManipulationCompleted">
+        <Grid.Background>
+            <StaticResource ResourceKey="pageback"/>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+        <!--title-->
+        <Grid Grid.Row="0" Style="{StaticResource header}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock  Style="{StaticResource titleStyle}" Text="2048" Grid.Column="0" Margin="12,1"/>
+            <Border Grid.Row="0" Grid.Column="1" Style="{StaticResource BorderStyle1}">
+                <StackPanel  Orientation="Vertical">
+                    <TextBlock Text="{Binding LocalizedResources.ScoreText, Mode=OneWay, Source={StaticResource LocalizedStrings}}" TextAlignment="Center"/>
+                    <TextBlock Text="{Binding Score}" TextAlignment="Center" Style="{StaticResource TextBlockStyle1}"/>
+                </StackPanel>
+            </Border>
+            <Border  Grid.Row="0" Grid.Column="2" Style="{StaticResource BorderStyle1}">
+                <StackPanel   Orientation="Vertical">
+                    <TextBlock Text="{Binding LocalizedResources.BestScoreText, Mode=OneWay, Source={StaticResource LocalizedStrings}}" TextAlignment="Center"/>
+                    <TextBlock Text="{Binding BestScore}" TextAlignment="Center" Style="{StaticResource ResourceKey=TextBlockStyle1}"/>
+                </StackPanel>
+            </Border>
+        </Grid>
+        <!--describe-->
+        <Border Grid.Row="1" HorizontalAlignment="left" VerticalAlignment="Center" Style="{StaticResource row}">
+            <TextBlock x:Name="tbmsg" Foreground="{StaticResource txtbrush}" Text="{Binding LocalizedResources.Descripte, Mode=OneWay, Source={StaticResource LocalizedStrings}}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        </Border>
+
+        <!--gird panel-->
+        <Border  Grid.Row="2" Style="{StaticResource BorderStyle1}">
+            <Grid x:Name="bordGrid"/>
+        </Border>
+    </Grid>
+</phone:PhoneApplicationPage>

@@ -1,0 +1,8 @@
+﻿<Deployment xmlns="http://schemas.microsoft.com/client/2007/deployment" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" EntryPointAssembly="Game" EntryPointType="Game.App" RuntimeVersion="4.7.50308.0">
+  <Deployment.Parts>
+    <AssemblyPart x:Name="Game" Source="Game.dll" />
+    <AssemblyPart x:Name="Microsoft.Practices.Unity" Source="Microsoft.Practices.Unity.dll" />
+    <AssemblyPart x:Name="Microsoft.Practices.Unity.RegistrationByConvention" Source="Microsoft.Practices.Unity.RegistrationByConvention.dll" />
+    <AssemblyPart Source="zh/Game.resources.dll" />
+  </Deployment.Parts>
+</Deployment>
